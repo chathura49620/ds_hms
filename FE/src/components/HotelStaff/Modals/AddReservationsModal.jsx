@@ -40,7 +40,7 @@ export class AddReservationsModal extends Component {
         event.preventDefault();
         // const isValid = this.validate(event);
         // if(isValid){
-            fetch('http://localhost:8081/addReservation', {
+            fetch('http://localhost:8082/addReservation', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

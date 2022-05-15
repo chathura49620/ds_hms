@@ -3,10 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SuperAdminSideNav from '../components/SuperAdmin/sideNav/Sidebar';
 import HotelStaffSideNav from '../components/HotelStaff/sideNav/Sidebar';
+import TravellerSideNav from '../components/Traveller/sideNav/Sidebar';
 
 
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import HotelStaffDashboard from './HotelStaff/Dashboard'
+import TravellerDashboard from './Traveller/Dashboard'
+
 
 //super admin routers
 import BasicInfo from './SuperAdmin/BasicInfo';
@@ -15,7 +18,8 @@ import UserList from './SuperAdmin/UserList';
 import Categories from './SuperAdmin/Categories';
 import ProductCodes from './SuperAdmin/ProductCodes';
 import MaterialCodes from './SuperAdmin/MaterialCodes';
-import  login  from './SuperAdmin/login';
+import  login  from '../components/forms/loginUser';
+import  RegisterTraveller  from '../components/forms/registerTraveller';
 
 //super admin routers
 import Reservation from './HotelStaff/Reservation';
@@ -53,6 +57,11 @@ class Dashboard extends Component {
                     <HotelStaffSideNav/> 
                 );
             }
+            if(user_role == 'Traveller'){
+                return (
+                    <TravellerSideNav/> 
+                );
+            }
         }
     }
 
@@ -65,6 +74,7 @@ class Dashboard extends Component {
             return (
                 <div>
                     <Route path= '/' exact component={login} />
+                    <Route path= '/registerTraveller' exact component={RegisterTraveller} />
                 </div>
             );
         }else{
@@ -78,6 +88,13 @@ class Dashboard extends Component {
                         <Route path='/categories' exact component={Categories} />
                         <Route path='/product-codes' exact component={ProductCodes} />
                         <Route path='/metirial-codes' exact component={MaterialCodes} />
+                    </div>
+                );
+            }
+            if(user_role == 'Traveller'){
+                return (
+                    <div>
+                        <Route path='/' exact component={TravellerDashboard} />
                     </div>
                 );
             }

@@ -13,7 +13,7 @@ class Reservations extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/reservations")
+      .get("http://localhost:8082/reservations")
       .then((result) => {
         const reservations = result.data;
 
