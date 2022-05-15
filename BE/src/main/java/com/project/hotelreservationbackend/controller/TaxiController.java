@@ -1,4 +1,4 @@
-package com.csse.project.ticketingsystembackend.controller;
+package com.project.hotelreservationbackend.controller;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csse.project.ticketingsystembackend.entity.Product;
-import com.csse.project.ticketingsystembackend.entity.Taxi;
-import com.csse.project.ticketingsystembackend.service.TaxiService;
+import com.project.hotelreservationbackend.entity.Product;
+import com.project.hotelreservationbackend.entity.Taxi;
+import com.project.hotelreservationbackend.service.TaxiService;
 
 @RestController
 public class TaxiController {

@@ -1,4 +1,4 @@
-package com.csse.project.ticketingsystembackend.entity;
+package com.project.hotelreservationbackend.entity;
 
 import javax.persistence.Entity;
 

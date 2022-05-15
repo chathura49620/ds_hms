@@ -1,12 +1,12 @@
-package com.csse.project.ticketingsystembackend.service;
+package com.project.hotelreservationbackend.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.csse.project.ticketingsystembackend.entity.Reservation;
-import com.csse.project.ticketingsystembackend.repository.HotelStaffRepository;
+import com.project.hotelreservationbackend.entity.Reservation;
+import com.project.hotelreservationbackend.repository.HotelStaffRepository;
 
 @Service
 public class HotelStaffService {
