@@ -13,7 +13,7 @@ class Rooms extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8082/rooms")
+      .get("http://localhost:8083/rooms")
       .then((result) => {
         const rooms = result.data;
 

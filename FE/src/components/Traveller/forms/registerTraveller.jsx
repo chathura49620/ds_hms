@@ -60,7 +60,7 @@ class RegisterTraveller extends FormSuper {
 
     console.log("submitted")
 
-    const response = await fetch("http://localhost:8082/adduser", {
+    const response = await fetch("http://localhost:8083/adduser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(jsonOb),

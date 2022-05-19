@@ -37,7 +37,7 @@ export class AddTaxiReservationsModal extends Component {
     event.preventDefault();
     // const isValid = this.validate(event);
     // if(isValid){
-    fetch("http://localhost:8082/addtaxi", {
+    fetch("http://localhost:8083/addtaxi", {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -33,7 +33,7 @@ export class AddRoomsModel extends Component {
         event.preventDefault();
         // const isValid = this.validate(event);
         // if(isValid){
-            fetch('http://localhost:8082/addRoom', {
+            fetch('http://localhost:8083/addRoom', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

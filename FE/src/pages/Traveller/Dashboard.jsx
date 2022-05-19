@@ -21,14 +21,14 @@ class Dashboard extends Component {
 
   async componentDidMount() {
 
-    const response = await fetch("http://localhost:8082/reservedRooms", {
+    const response = await fetch("http://localhost:8083/reservedRooms", {
       method: "GET",
     });
 
     const data = await response.json();
 
 
-    const response2 = await fetch("http://localhost:8082/rooms", {
+    const response2 = await fetch("http://localhost:8083/rooms", {
       method: "GET",
     });
 

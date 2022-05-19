@@ -22,7 +22,7 @@ export class EditTaxiReservationsModal extends Component {
     event.preventDefault();
     //alert(event.target.name.value);
 
-    fetch("http://localhost:8082/update/taxies", {
+    fetch("http://localhost:8083/update/taxies", {
       method: "PUT",
       headers: {
         Accept: "application/json",

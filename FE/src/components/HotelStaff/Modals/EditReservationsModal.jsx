@@ -24,7 +24,7 @@ export class EditReservationsModal extends Component {
         event.preventDefault();
         //alert(event.target.name.value);
 
-        fetch('http://localhost:8082/updateReservation', { 
+        fetch('http://localhost:8083/updateReservation', { 
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

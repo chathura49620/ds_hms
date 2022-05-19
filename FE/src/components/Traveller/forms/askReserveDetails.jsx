@@ -41,7 +41,7 @@ class AskReserveDetails extends FormSuper {
   async componentDidMount() {
 
 
-    const response = await fetch("http://localhost:8082/reservedRooms", {
+    const response = await fetch("http://localhost:8083/reservedRooms", {
       method: "GET",
     });
 
@@ -137,11 +137,15 @@ class AskReserveDetails extends FormSuper {
         break;
       }
       else {
+<<<<<<< HEAD
           console.log(this.state.isPayamentDone);
            const {isPayamentDone} = this.state;
 
 
           const response = await fetch("http://localhost:8082/addReservedRoom", {
+=======
+          const response = await fetch("http://localhost:8083/addReservedRoom", {
+>>>>>>> 8ff6aa15fdb98fb3fcbafd5c80f1b3a1ad7b2fc0
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(jsonOb),
