@@ -13,30 +13,30 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.hotelreservationbackend.entity.Room;
-import com.project.hotelreservationbackend.service.RoomService;
+import com.project.hotelreservationbackend.entity.Payment;
+import com.project.hotelreservationbackend.service.PaymentService;
 
 @CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
 @RestController
-public class RoomController {
-	
+public class PaymentController {
 	
 	@Autowired
-	private RoomService service;
+	private PaymentService service;
 	
-	@PostMapping("/addRoom")
-	public Room addRoom(@RequestBody Room room) {
+	
+	
+	@PostMapping("/addPaymentDetails")
+	public Payment addReservation(@RequestBody Payment payment) {
 		
-		return service.saveRoom(room);
+		return service.savePayment(payment);
+		
+	}
+		
+	@GetMapping("/payments")
+	public List<Payment> findAllPayment(){
+		
+		return service.getPayments();
 		
 	}
 	
-
-	@GetMapping("/rooms")
-	public List<Room> findAllTaxies(){
-		
-		return service.getRooms();
-		
-	}
-
 }

@@ -5,7 +5,6 @@ import Chart from "../charts/chart";
 // import "./dashboard.css";
 import hello from "../assets/hello.png";
 // import clock from "../assets/clock.png";
-import { AddFactoryDetailsModal } from '../../components/SuperAdmin/Modals/AddFactoryDetailsModal';
 // import Clock from "../../components/ProductionManager/common/clock";
 
 class Dashboard extends Component {
