@@ -26,7 +26,7 @@ export class AddUserModal extends Component {
         event.preventDefault();
         const isValid = this.validate();
         // if(isValid){
-            fetch('http://localhost:8083/adduser', {
+            fetch('http://localhost:8089/adduser', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

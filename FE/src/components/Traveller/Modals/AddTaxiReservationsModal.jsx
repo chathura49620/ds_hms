@@ -12,7 +12,7 @@ export class AddTaxiReservationsModal extends Component {
     this.state = {
       snackbaropen: false,
       snackbarmsg: "",
-      // categories: [],
+      taxies: [],
       productCodeError: "",
       productCategoryError: "",
     };
@@ -22,32 +22,36 @@ export class AddTaxiReservationsModal extends Component {
     this.setState({ snackbaropen: false });
   };
 
-  // componentDidMount() {
-  //     axios
-  //       .get("http://localhost:5000/api/categories")
-  //       .then((result) => {
-  //         const categories = result.data;
+  componentDidMount() {
+      axios
+        .get("http://localhost:8089/gettaxies")
+        .then((result) => {
+          const taxies = result.data;
 
-  //         this.setState({ categories: categories });
-  //       })
-  //       .catch((err) => console.log(err.message));
-  //   }
+          this.setState({ taxies: taxies });
+        })
+        .catch((err) => console.log(err.message));
+    }
 
   handleSubmit(event) {
+    console.log("test 1");
+    console.log(event.target.customerName.value);
+    console.log("test 1");
     event.preventDefault();
     // const isValid = this.validate(event);
     // if(isValid){
-    fetch("http://localhost:8083/addtaxi", {
+    fetch("http://localhost:8089/addtaxi", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         username: "chathura",
       },
-      body: JSON.stringify({
+      body: JSON.stringify({  
         customerName: event.target.customerName.value,
         place: event.target.place.value,
         mobile: event.target.mobile.value,
+        vehicalNo: event.target.taxi_no.value,
       }),
     })
       .then((res) => res.json())
@@ -64,7 +68,7 @@ export class AddTaxiReservationsModal extends Component {
           });
           setTimeout(
             function () {
-              // window.location.reload();
+              window.location.reload();
             }.bind(this),
             1500
           );
@@ -120,7 +124,7 @@ export class AddTaxiReservationsModal extends Component {
           {...this.props}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
-          //centered
+        //centered
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
@@ -163,6 +167,15 @@ export class AddTaxiReservationsModal extends Component {
                     <div style={{ background: "#f8d7da" }}>
                       {this.state.productCodeError}
                     </div>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Taxi No</Form.Label>
+                    <Form.Control as="select" required name="taxi_no">
+                      {this.state.taxies.map((i) => (
+                        <option key={i.id}
+                        >{i.vehicalNo}</option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                   <br />
                   <Form.Group>

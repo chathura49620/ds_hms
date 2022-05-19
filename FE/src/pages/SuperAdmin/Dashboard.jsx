@@ -32,7 +32,7 @@ class Dashboard extends Component {
     this.setState({ user_name: user_name });
 
     axios
-    .get("http://localhost:8083/users")
+    .get("http://localhost:8089/users")
     .then((result) => {
       const users = result.data;
 
@@ -59,7 +59,7 @@ class Dashboard extends Component {
     .catch((err) => console.log(err.message));
 
     axios
-    .get("http://localhost:8083/rooms")
+    .get("http://localhost:8089/rooms")
     .then((result) => {
       const rooms = result.data;
 

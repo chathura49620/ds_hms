@@ -19,14 +19,7 @@ class Rooms extends Component {
   };
 
   componentDidMount() {
-    // axios
-    //   .get("http://localhost:8083/rooms")
-    //   .then((result) => {
-    //     const rooms = result.data;
-
-    //     this.setState({ rooms: rooms });
-    //   })
-    //   .catch((err) => console.log(err.message));
+ 
     const resavation_id= new URLSearchParams(this.props.location.search).get("resavation-id");
     const customerId= new URLSearchParams(this.props.location.search).get("customerId");
     const startDate= new URLSearchParams(this.props.location.search).get("startDate");
@@ -50,7 +43,7 @@ class Rooms extends Component {
     // if(isValid){
     
       
-    fetch('http://localhost:8083/addPaymentDetails', {
+    fetch('http://localhost:8089/addPaymentDetails', {
       
       method: 'POST',
       headers: {
@@ -66,15 +59,16 @@ class Rooms extends Component {
         amount: event.target.amount.value
       })
     })
-    fetch('http://localhost:8083/addReservedRoom', {
+    fetch('http://localhost:8089/updateReservation', {
       
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'username': 'chathura'
       },
       body: JSON.stringify({
+        id:this.state.resavation_id,
         roomNo: this.state.room_no,
         type: this.state.type,
         customerName: this.state.customerName,

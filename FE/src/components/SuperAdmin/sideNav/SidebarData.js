@@ -25,6 +25,11 @@ export const SidebarData = [
     icon: <FaIcons.FaCartPlus />
   },
   {
+    title: 'Taxies',
+    path: '/hotel-taxies',
+    icon: <FaIcons.FaCartPlus />
+  },
+  {
     title: 'Support',
     path: '/support',
     icon: <IoIcons.IoMdHelpCircle />

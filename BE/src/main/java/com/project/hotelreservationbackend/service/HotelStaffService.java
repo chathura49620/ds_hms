@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.hotelreservationbackend.entity.Reservation;
+import com.project.hotelreservationbackend.entity.ReservedRoom;
 import com.project.hotelreservationbackend.repository.HotelStaffRepository;
 
 @Service
@@ -15,23 +15,23 @@ public class HotelStaffService {
 	private HotelStaffRepository repository;
 	
 
-	public Reservation saveReservation(Reservation reservation) {
+	public ReservedRoom saveReservation(ReservedRoom reservation) {
 		
 		return repository.save(reservation);
 		
 	}
-    public List<Reservation> saveReservations(List<Reservation> reservation) {
+    public List<ReservedRoom> saveReservations(List<ReservedRoom> reservation) {
 		
 		return repository.saveAll(reservation);
 		
 	}
 	
-    public List<Reservation> getReservations(){
+    public List<ReservedRoom> getReservations(){
     	
     	return repository.findAll();
     }
     
-    public Reservation getReservationById(int id){
+    public ReservedRoom getReservationById(int id){
     	
     	return repository.findById(id).orElse(null);
     }
@@ -42,20 +42,11 @@ public class HotelStaffService {
     	
     }
     
-    public void saveOrUpdate(Reservation books)   
+    public void saveOrUpdate(ReservedRoom books)   
     {  
     	repository.save(books);  
     } 
     
-//    public Reservation updateReservation(Reservation reservation) {
-//    	
-//    	Reservation existingReservation = repository.findById(reservation.getId()).orElse(null);
-//    	existingReservation.setCustomerName(reservation.getCustomerName());
-//    	existingReservation.setRoomNo(reservation.getRoomNo());
-//    	existingReservation.setPrice(reservation.getPrice());
-//    	
-//    	return repository.save(existingReservation);
-//    	
-//    }
+
 	
 }

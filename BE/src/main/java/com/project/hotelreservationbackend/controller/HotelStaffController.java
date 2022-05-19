@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.hotelreservationbackend.entity.Reservation;
+import com.project.hotelreservationbackend.entity.ReservedRoom;
 import com.project.hotelreservationbackend.service.HotelStaffService;
 
 @CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
@@ -26,7 +26,7 @@ public class HotelStaffController {
 	
 	
 	@PostMapping("/addReservation")
-	public Reservation addReservation(@RequestBody Reservation reservation) {
+	public ReservedRoom addReservation(@RequestBody ReservedRoom reservation) {
 		
 		return service.saveReservation(reservation);
 		
@@ -34,7 +34,7 @@ public class HotelStaffController {
 	
 	
 	@PostMapping("/addReservations")
-    public Reservation addReservations(@RequestBody Reservation reservations) {
+    public ReservedRoom addReservations(@RequestBody ReservedRoom reservations) {
 		
 		return service.saveReservation(reservations);
 		
@@ -42,7 +42,7 @@ public class HotelStaffController {
 	
 	
 	@GetMapping("/reservations")
-	public List<Reservation> findAllProducts(){
+	public List<ReservedRoom> findAllProducts(){
 		
 		return service.getReservations();
 		
@@ -50,7 +50,7 @@ public class HotelStaffController {
 	
 	
 	@GetMapping("/reservationsById/{id}")
-	public Reservation findProductById(@PathVariable int id) {
+	public ReservedRoom findProductById(@PathVariable int id) {
 		
 		return service.getReservationById(id);
 		
@@ -60,7 +60,7 @@ public class HotelStaffController {
 
 	
 	@PutMapping("/updateReservation")  
-	private Reservation update(@RequestBody Reservation reservation)   
+	private ReservedRoom update(@RequestBody ReservedRoom reservation)   
 	{  
 		service.saveOrUpdate(reservation);  
 		return reservation;  

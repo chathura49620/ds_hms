@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
-// import { EditMaterialCodeModal } from '../Modals/EditMaterialCodeModal';
+import { EditTaxiModel } from '../Modals/EditTaxiModel';
 
-export class RoomsTable extends Component {
+export class TaxiTable extends Component {
   constructor(props) {
     super(props);
     this.state = { cate: [], editModalShow: false }
@@ -19,7 +19,7 @@ export class RoomsTable extends Component {
     })
     .then((willDelete) => {
       if (willDelete) {
-        fetch('http://localhost:5000/api/meterial-code', {
+        fetch(`http://localhost:8089/delete/hoteltaxies/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -49,43 +49,67 @@ export class RoomsTable extends Component {
   }
 
   render() {
-    // const {id, matirialName, materialCode, status } = this.state;
-    // let EditModelClose = () => this.setState({ editModalShow: false })
+    const {id, vehicalNo, drivarName, mobile } = this.state;
+    let EditModelClose = () => this.setState({ editModalShow: false })
   return (
     <div>
        <ButtonToolbar>
-      {/* <EditMaterialCodeModal
+      <EditTaxiModel
           show={this.state.editModalShow}
           onHide={EditModelClose}
           id={id}
-          matirialName={matirialName}
-          materialCode={materialCode}
-          status={status}
-      /> */}
+          vehicalNo={vehicalNo}
+          drivarName={drivarName}
+          mobile={mobile}
+      />
       </ButtonToolbar>
     <table className="table table-bordered table-sm m-2" style={{width:"1000px"}}>
       <thead>
         <tr style={{ backgroundColor: "#7121AD", color: "white" } }>
           <th scope="col">Id</th>
-          <th scope="col">roomNo</th>
-          <th scope="col">type</th>
-          <th scope="col">status</th>
-          <th scope="col">perHour</th>
-          <th scope="col">perDay</th>
+          <th scope="col">Vehical No</th>
+          <th scope="col">Drivare Name</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        {this.props.rooms.map((i) => (
+        {this.props.taxi.map((i) => (
           <tr
             key={i.id}
           >
             <td>{i.id}</td>
-            <td>{i.roomNo}</td>
-            <td>{i.type}</td>
-            <td>{i.status}</td>
-            <td>{i.perHour}</td>
-            <td>{i.perDay}</td>
-           
+            <td>{i.vehicalNo}</td>
+            <td>{i.drivarName}</td>
+            <td>{i.mobile}</td>
+            <td>
+                  <button
+                    className="btn-sm"
+                    style={{
+                      backgroundColor: "#7121AD",
+                      color: "white",
+                      marginRight: "4px",
+                    }}
+                    onClick={() =>
+                      this.setState({
+                        editModalShow: true,
+                        id: i.id,
+                        vehicalNo: i.vehicalNo,
+                        drivarName: i.drivarName,
+                        mobile: i.mobile,
+                      })
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn-sm"
+                    style={{ backgroundColor: "#BA0D32 ", color: "white" }}
+                    onClick={() => this.deleteMatCode(i.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
           </tr>
         ))}
       </tbody>

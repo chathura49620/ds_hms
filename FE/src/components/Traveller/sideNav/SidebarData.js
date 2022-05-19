@@ -13,8 +13,8 @@ export const SidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
-    title: "Basic Info",
-    path: "/basic-info",
+    title: "Taxi Resavation",
+    path: "/taxi-resavation",
     icon: <IoIcons.IoMdPlay />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "TAXI_TBL")
+@Table(name = "RESERVED_TAXI_TBL")
 public class Taxi {
 	
 	@Id
@@ -16,15 +16,17 @@ public class Taxi {
 	private String customerName;
 	private String place ;
 	private String mobile;
+	private String vehicalNo;
 	
 	public Taxi() {}
 
-	public Taxi(int id, String customerName, String place, String mobile) {
+	public Taxi(int id, String customerName, String place, String mobile, String vehicalNo) {
 		super();
 		this.id = id;
 		this.customerName = customerName;
 		this.place = place;
 		this.mobile = mobile;
+		this.vehicalNo = vehicalNo;
 	}
 
 	public int getId() {
@@ -59,15 +61,19 @@ public class Taxi {
 		this.mobile = mobile;
 	}
 
+	public String getVehicalNo() {
+		return vehicalNo;
+	}
+
+	public void setVehicalNo(String vehicalNo) {
+		this.vehicalNo = vehicalNo;
+	}
+
 	@Override
 	public String toString() {
-		return "Taxi [id=" + id + ", customerName=" + customerName + ", place=" + place + ", mobile=" + mobile + "]";
+		return "Taxi [id=" + id + ", customerName=" + customerName + ", place=" + place + ", mobile=" + mobile
+				+ ", vehicalNo=" + vehicalNo + "]";
 	}
-	
-	
-	
-	
-	
-	
+
 
 }

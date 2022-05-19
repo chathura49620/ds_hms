@@ -10,8 +10,9 @@ import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import TravellerDashboard from './Traveller/Dashboard'
 
 //
-//super admin routers
+//super admin routers 
 import Users from './SuperAdmin/Users';
+import HotelTaxies from './SuperAdmin/Taxi';
 import Rooms from './SuperAdmin/Rooms';
 import login from "../components/Traveller/forms/loginUser";
 import  RegisterTraveller  from '../components/Traveller/forms/registerTraveller';
@@ -24,6 +25,7 @@ import MyProfile from './Traveller/myProfile';
 
 
 import Payment from './Traveller/Payment';
+import TaxiResavation from './Traveller/TaxiReservation';
 
 
 
@@ -87,6 +89,7 @@ class Dashboard extends Component {
                         <Route path='/' exact component={SuperAdminDashboard} />
                         <Route path='/staff-users' exact component={Users} />
                         <Route path='/hotel-rooms' exact component={Rooms} />
+                        <Route path='/hotel-taxies' exact component={HotelTaxies} />
                     </div>
                 );
             }
@@ -98,6 +101,7 @@ class Dashboard extends Component {
                          <Route path='/availableRooms' exact component={ViewAvailableRooms} />
                          <Route path='/reservedRooms' exact component={ViewReservedRooms} />
                          <Route path='/myprofile' exact component={MyProfile} />
+                         <Route path='/taxi-resavation' exact component={TaxiResavation} />
                          
 
                     </div>

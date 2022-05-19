@@ -12,7 +12,7 @@ class TaxiReservation extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8083/taxies")
+      .get("http://localhost:8089/taxies")
       .then((result) => {
         const reservations = result.data;
 

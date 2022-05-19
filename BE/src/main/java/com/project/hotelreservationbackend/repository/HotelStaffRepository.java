@@ -3,14 +3,14 @@ package com.project.hotelreservationbackend.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.project.hotelreservationbackend.entity.Reservation;
+import com.project.hotelreservationbackend.entity.ReservedRoom;
 
 
 @Repository
-public interface HotelStaffRepository extends JpaRepository<Reservation, Integer>{
+public interface HotelStaffRepository extends JpaRepository<ReservedRoom, Integer>{
 
-	Reservation findByCustomerName(String name);
-	Reservation findByRoomNo(String name);
+	ReservedRoom findByCustomerName(String name);
+	ReservedRoom findByRoomNo(String name);
 	
 	
 	

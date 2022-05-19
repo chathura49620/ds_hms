@@ -7,13 +7,13 @@ import IconButton from '@material-ui/core/IconButton';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddReservationsModal extends Component {
+export class AddTaxiModel extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             snackbaropen: false, 
             snackbarmsg: '',
-            // categories: [],
+            categories: [],
             productCodeError:'',
             productCategoryError:''
          };
@@ -24,12 +24,16 @@ export class AddReservationsModal extends Component {
         this.setState({ snackbaropen: false });
     };
 
-    handleSubmit(event) {
+    componentDidMount() {
+        
+      }
 
+    handleSubmit(event) {
+        console.log("test");
         event.preventDefault();
         // const isValid = this.validate(event);
         // if(isValid){
-            fetch('http://localhost:8089/addReservation', {
+            fetch('http://localhost:8089/addhoteltaxi', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -37,19 +41,16 @@ export class AddReservationsModal extends Component {
                     'username': 'chathura'
                 },
                 body: JSON.stringify({
-                    customerName: event.target.customerName.value,
-                    customerId: event.target.customerId.value,
-                    roomNo: event.target.roomNo.value,
-                    type: 'test',
-                    startDate: event.target.startDate.value,
-                    endDate: event.target.endDate.value,
-                    paymentStatus:'InComplete'
+                    vehicalNo: event.target.vehicalNo.value,
+                    drivarName: event.target.drivarName.value,
+                    mobile: event.target.mobile.value,
+                   
                 })
             })
                 .then(res => res.json())
                 .then((result) => {
                     swal({
-                        title: "Reservation Added Succesfully",
+                        title: "Taxi Added Succesfully",
                         icon: "success",
                         button: "Done",
                     });
@@ -58,7 +59,7 @@ export class AddReservationsModal extends Component {
                         productCategoryError:''
                     })
                     setTimeout(function() {
-                        // window.location.reload(); 
+                        window.location.reload(); 
                       }.bind(this), 1500);
                 }, (error) => {
                     this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
@@ -68,32 +69,7 @@ export class AddReservationsModal extends Component {
         // }
     }
 
-    validate(event){
-        let productCodeError = "";
-        let productCategoryError = "";
-      
-       
-        if(!event.target.productCode.value){
-            productCodeError = "Product Code Cannot Be Blank"
-        }
-        if(!event.target.productCategory.value){
-            productCategoryError = "Please Select Product Category"
-        }
-        
-       
-
-        if(productCodeError){
-            this.setState({
-                productCodeError:productCodeError,
-                productCategoryError:productCategoryError
-            })
-            return false;
-        }else{
-            return true;
-        }
-
-        
-    }
+    
 
     render() {
         return (
@@ -116,7 +92,7 @@ export class AddReservationsModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Reservation
+                            Add Taxi
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -124,39 +100,22 @@ export class AddReservationsModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="customerName">
-                                        <Form.Label>Customer Name</Form.Label>
-                                        <Form.Control type="text" name="customerName"  placeholder="Customer Name" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
+                                    <Form.Group controlId="vehicalNo">
+                                        <Form.Label>Vehical No</Form.Label>
+                                        <Form.Control type="text" name="vehicalNo"  placeholder="vehical No" />
                                     </Form.Group>
-                                    <Form.Group controlId="customerId">
-                                        <Form.Label>Customer Name</Form.Label>
-                                        <Form.Control type="text" name="customerId"  placeholder="customerId" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
+                                    <Form.Group controlId="drivarName">
+                                        <Form.Label>Drivar Name</Form.Label>
+                                        <Form.Control type="text" name="drivarName"  placeholder="drivarName" />
                                     </Form.Group>
-                                    <Form.Group controlId="roomNo">
-                                        <Form.Label>Room No</Form.Label>
-                                        <Form.Control type="text" name="roomNo"  placeholder="Room No" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
+                                    <Form.Group controlId="mobile">
+                                        <Form.Label>mobile</Form.Label>
+                                        <Form.Control type="text" name="mobile"  placeholder="mobile" />
                                     </Form.Group>
-                                    <Form.Group controlId="price">
-                                        <Form.Label>Price</Form.Label>
-                                        <Form.Control type="text" name="price"  placeholder="Price" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
-                                    </Form.Group>
-                                    <Form.Group controlId="startDate">
-                                        <Form.Label>Start Date</Form.Label>
-                                        <Form.Control type="date" name="startDate"  placeholder="startDate" />
-                                    </Form.Group>
-                                    <Form.Group controlId="endDate">
-                                        <Form.Label>End Date</Form.Label>
-                                        <Form.Control type="date" name="endDate"  placeholder="endDate" />
-                                    </Form.Group>
-
                                     <br />
                                     <Form.Group>
                                         <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Reservation
+                                            Add Taxi
                                         </Button>
                                     </Form.Group>
                                 </Form>

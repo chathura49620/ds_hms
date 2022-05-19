@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import swal from 'sweetalert';
 import axios from "axios";
 
-export class EditReservationsModal extends Component {
+export class EditTaxiModel extends Component {
     constructor(props) {
         super(props);
         this.state = { snackbaropen: false, snackbarmsg: '', categories:[] };
@@ -24,7 +24,7 @@ export class EditReservationsModal extends Component {
         event.preventDefault();
         //alert(event.target.name.value);
 
-        fetch('http://localhost:8089/updateReservation', { 
+        fetch('http://localhost:8089/update/hoteltaxies', { 
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -33,18 +33,19 @@ export class EditReservationsModal extends Component {
             },
             body: JSON.stringify({
                 id: event.target.id.value,
-                customerName: event.target.customerName.value,
-                roomNo: event.target.roomNo.value,
-                price: event.target.price.value
+                vehicalNo: event.target.vehicalNo.value,
+                drivarName: event.target.drivarName.value,
+                mobile: event.target.mobile.value,
             })
         })
             .then(res => res.json())
             .then((result) => {
                 swal({
-                    title: "Reservation Updated Succesfully",
+                    title: "Product Code Updated Succesfully",
                     icon: "success",
                     button: "Done",
                   });
+                  window.location.reload();
             }, (error) => {
                 this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
             }
@@ -73,7 +74,7 @@ export class EditReservationsModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Reservation
+                            Edit Product Code
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -82,20 +83,19 @@ export class EditReservationsModal extends Component {
                             <Col sm={6}>
                             <Form onSubmit={this.handleSubmit}>
                                     <Form.Group controlId="id">
-                                        <Form.Label>ID</Form.Label>
                                         <Form.Control type="text" name="id" required disabled defaultValue={this.props.id} hidden/>
                                     </Form.Group>
-                                    <Form.Group controlId="customerName">
-                                        <Form.Label>Customer Name</Form.Label>
-                                        <Form.Control type="text" name="customerName" required placeholder="Customer Name" defaultValue={this.props.customerName} />
+                                    <Form.Group controlId="vehicalNo">
+                                        <Form.Label>Vehical No</Form.Label>
+                                        <Form.Control type="text" name="vehicalNo" required placeholder="Product Code" defaultValue={this.props.vehicalNo} />
                                     </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Room No</Form.Label>
-                                        <Form.Control type="text" name="roomNo" required placeholder="Room No" defaultValue={this.props.roomNo} />
+                                    <Form.Group controlId="drivarName">
+                                        <Form.Label>Drivar Name</Form.Label>
+                                        <Form.Control type="text" name="drivarName"  placeholder="drivarName" defaultValue={this.props.drivarName} />
                                     </Form.Group>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Price</Form.Label>
-                                        <Form.Control type="text" name="price" required placeholder="Price" defaultValue={this.props.price} />
+                                    <Form.Group controlId="mobile">
+                                        <Form.Label>mobile</Form.Label>
+                                        <Form.Control type="text" name="mobile"  placeholder="mobile" defaultValue={this.props.mobile} />
                                     </Form.Group>
                                     <br />
                                     <Form.Group>

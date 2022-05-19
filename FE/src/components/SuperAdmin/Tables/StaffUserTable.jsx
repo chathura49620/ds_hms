@@ -72,7 +72,6 @@ export class StaffUserTable extends Component {
           <th scope="col">Password</th>
           <th scope="col">country</th>
           <th scope="col">type</th>
-          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -81,21 +80,14 @@ export class StaffUserTable extends Component {
             key={i.id}
             
           >
+             <td>{i.id}</td>
             <td>{i.fullName}</td>
             <td>{i.email}</td>
             <td>{i.contact}</td>
             <td>{i.password}</td>
             <td>{i.country}</td>
             <td>{i.type}</td>
-            <td><button 
-              className="btn-sm"
-              style={{ backgroundColor: "#7121AD", color: "white", marginRight:"4px" }}
-            onClick={() => this.setState({ editModalShow: true, id: i._id, name: i.categoryName, status: i.status })}
-            >Edit</button> 
-            <button 
-            className="btn-sm"
-            style={{ backgroundColor: "#BA0D32 ", color: "white" }} 
-            onClick={() => this.deleteCat(i._id)}>Delete</button></td>
+            
           </tr>
         ))}
       </tbody>

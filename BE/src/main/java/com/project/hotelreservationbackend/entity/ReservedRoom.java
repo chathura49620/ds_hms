@@ -19,6 +19,7 @@ public class ReservedRoom {
 	private String customerId;
 	private String startDate;
 	private String endDate;
+	private String paymentStatus;
 	
 
 	
@@ -27,7 +28,7 @@ public class ReservedRoom {
 
 
 	public ReservedRoom(int id, String roomNo, String type, String customerName, String customerId, String startDate,
-			String endDate) {
+			String endDate, String paymentStatus) {
 		super();
 		this.id = id;
 		this.roomNo = roomNo;
@@ -36,6 +37,7 @@ public class ReservedRoom {
 		this.customerId = customerId;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.paymentStatus = paymentStatus;
 	}
 
 
@@ -124,14 +126,27 @@ public class ReservedRoom {
 
 
 
-	@Override
-	public String toString() {
-		return "ReservedRoom [id=" + id + ", roomNo=" + roomNo + ", type=" + type + ", customerName=" + customerName
-				+ ", customerId=" + customerId + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	public String getPaymentStatus() {
+		return paymentStatus;
 	}
 
 
-	
 
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ReservedRoom [id=" + id + ", roomNo=" + roomNo + ", type=" + type + ", customerName=" + customerName
+				+ ", customerId=" + customerId + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", paymentStatus=" + paymentStatus + "]";
+	}
+
+
+
+	
 	
 }

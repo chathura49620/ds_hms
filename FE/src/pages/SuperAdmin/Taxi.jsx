@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import { AddUserModal } from '../../components/SuperAdmin/Modals/AddUserModal';
-import {StaffUserTable} from "../../components/SuperAdmin/Tables/StaffUserTable";
+import { AddTaxiModel } from '../../components/SuperAdmin/Modals/AddTaxiModel';
+import {TaxiTable} from "../../components/SuperAdmin/Tables/TaxiTable";
 
 
-class Users extends Component {
+class Taxi extends Component {
   state = {
-    users: [],
+    taxi: [],
     addModalShow: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:8089/users")
+      .get("http://localhost:8089/gettaxies")
       .then((result) => {
-        const users = result.data;
+        const taxi = result.data;
 
-        this.setState({ users: users });
+        this.setState({ taxi: taxi });
       })
       .catch((err) => console.log(err.message));
   }
@@ -26,14 +26,14 @@ class Users extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
-        <h1 className="mb-5">Users</h1>
+        <h1 className="mb-5">Taxi</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add System User
+                    >Add Taxi
                     </Button>
-                    <AddUserModal
+                    <AddTaxiModel
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />
@@ -41,7 +41,7 @@ class Users extends Component {
         <div className="row">
           <div className="col-1"></div>
           <div className="col">
-            <StaffUserTable users={this.state.users} />
+            <TaxiTable taxi={this.state.taxi} />
           </div>
         </div>
       </React.Fragment>
@@ -49,4 +49,4 @@ class Users extends Component {
   }
 };
 
-export default Users;
+export default Taxi;

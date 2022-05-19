@@ -41,7 +41,7 @@ class AskReserveDetails extends FormSuper {
   async componentDidMount() {
 
 
-    const response = await fetch("http://localhost:8083/reservedRooms", {
+    const response = await fetch("http://localhost:8089/reservedRooms", {
       method: "GET",
     });
 
@@ -70,18 +70,6 @@ class AskReserveDetails extends FormSuper {
   onChangeValue = (event) => {
     console.log(event.target.value);
     this.setState({isPayamentDone: event.target.value});
-    // var amount = 100;
-    // var customerName = this.state.data.customerName;
-    // var customerId = this.state.data.customerId;
-    // var startDate = this.state.data.startDate;
-    // var endDate = this.state.data.endDate;
-    // var type = this.state.data.type;
-    // var room_no = this.state.data.roomNo;
-    // if(event.target.value == 'yes'){
-    //   window.location.href = 'http://localhost:3000/payment?amount=' + amount +'&resavation-id=10' + '&customerName=' + customerName + '&customerId=' + customerId + '&startDate=' + startDate + '&endDate=' + endDate  + '&type=' + type + '&room_no=' + room_no ;
-   // }
-    // this.setState({isPayamentDone : 'yes'});
-    // console.log("test" , this.state.isPayamentDone);
   }
 
   async doSubmit() {
@@ -142,7 +130,7 @@ class AskReserveDetails extends FormSuper {
 
 
          
-          const response = await fetch("http://localhost:8083/addReservedRoom", {
+          const response = await fetch("http://localhost:8089/addReservedRoom", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(jsonOb),
@@ -150,12 +138,13 @@ class AskReserveDetails extends FormSuper {
   
           const data = await response.json();
   
-           console.log(data);
+           console.log("data",data.id);
 
 
            if(isPayamentDone === 'yes'){
 
     let amount = 100;
+    let resavation_id = data.id;
     let customerName = this.state.data.customerName;
     let customerId = this.state.data.customerId;
     let startDate = this.state.data.startDate;
@@ -163,7 +152,7 @@ class AskReserveDetails extends FormSuper {
     let type = this.state.data.type;
     let room_no = this.state.data.roomNo;
   
-       window.location.href = 'http://localhost:3000/payment?amount=' + amount +'&resavation-id=10' + '&customerName=' + customerName + '&customerId=' + customerId + '&startDate=' + startDate + '&endDate=' + endDate  + '&type=' + type + '&room_no=' + room_no ;
+       window.location.href = 'http://localhost:3000/payment?amount=' + amount +'&resavation-id=' + resavation_id + '&customerName=' + customerName + '&customerId=' + customerId + '&startDate=' + startDate + '&endDate=' + endDate  + '&type=' + type + '&room_no=' + room_no ;
   
           
            }
