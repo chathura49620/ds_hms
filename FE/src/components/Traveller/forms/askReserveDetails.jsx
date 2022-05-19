@@ -137,15 +137,12 @@ class AskReserveDetails extends FormSuper {
         break;
       }
       else {
-<<<<<<< HEAD
           console.log(this.state.isPayamentDone);
            const {isPayamentDone} = this.state;
 
 
-          const response = await fetch("http://localhost:8082/addReservedRoom", {
-=======
+         
           const response = await fetch("http://localhost:8083/addReservedRoom", {
->>>>>>> 8ff6aa15fdb98fb3fcbafd5c80f1b3a1ad7b2fc0
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(jsonOb),
@@ -168,7 +165,7 @@ class AskReserveDetails extends FormSuper {
   
        window.location.href = 'http://localhost:3000/payment?amount=' + amount +'&resavation-id=10' + '&customerName=' + customerName + '&customerId=' + customerId + '&startDate=' + startDate + '&endDate=' + endDate  + '&type=' + type + '&room_no=' + room_no ;
   
-            console.log("rama in the way")
+          
            }
   
     swal({
