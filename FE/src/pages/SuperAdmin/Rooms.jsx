@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import { AddProductCodeModal } from '../../components/SuperAdmin/Modals/AddProductCodeModal';
-import {ProductCodesTable} from "../../components/SuperAdmin/Tables/ProductCodesTable";
+import { AddRoomsModel } from '../../components/SuperAdmin/Modals/AddRoomsModel';
+import {RoomsTable} from "../../components/SuperAdmin/Tables/RoomsTable";
 
 
-class ProductCodes extends Component {
+class Rooms extends Component {
   state = {
-    ProductCodes: [],
+    rooms: [],
     addModalShow: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/product-code")
+      .get("http://localhost:8082/rooms")
       .then((result) => {
-        const ProductCodes = result.data;
+        const rooms = result.data;
 
-        this.setState({ ProductCodes: ProductCodes });
+        this.setState({ rooms: rooms });
       })
       .catch((err) => console.log(err.message));
   }
@@ -26,14 +26,14 @@ class ProductCodes extends Component {
     let AddModelClose = () => this.setState({ addModalShow: false })
   return (
     <React.Fragment>
-        <h1 className="mb-5">Product Codes</h1>
+        <h1 className="mb-5">Rooms</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add Product Code
+                    >Add Rooms
                     </Button>
-                    <AddProductCodeModal
+                    <AddRoomsModel
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />
@@ -41,7 +41,7 @@ class ProductCodes extends Component {
         <div className="row">
           <div className="col-1"></div>
           <div className="col">
-            <ProductCodesTable filteredItems={this.state.ProductCodes} />
+            <RoomsTable rooms={this.state.rooms} />
           </div>
         </div>
       </React.Fragment>
@@ -49,4 +49,4 @@ class ProductCodes extends Component {
   }
 };
 
-export default ProductCodes;
+export default Rooms;

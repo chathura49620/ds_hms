@@ -7,17 +7,12 @@ import TravellerSideNav from '../components/Traveller/sideNav/Sidebar';
 
 
 import SuperAdminDashboard from './SuperAdmin/Dashboard'
-import HotelStaffDashboard from './HotelStaff/Dashboard'
 import TravellerDashboard from './Traveller/Dashboard'
 
 //
 //super admin routers
-import BasicInfo from './SuperAdmin/BasicInfo';
-import UserRoles from './SuperAdmin/UserRoles';
-import UserList from './SuperAdmin/UserList';
-import Categories from './SuperAdmin/Categories';
-import ProductCodes from './SuperAdmin/ProductCodes';
-import MaterialCodes from './SuperAdmin/MaterialCodes';
+import Users from './SuperAdmin/Users';
+import Rooms from './SuperAdmin/Rooms';
 import login from "../components/Traveller/forms/loginUser";
 import  RegisterTraveller  from '../components/Traveller/forms/registerTraveller';
 
@@ -26,6 +21,10 @@ import Reservation from './HotelStaff/Reservation';
 import ViewAvailableRooms from './Traveller/viewAvailableRooms';
 import ViewReservedRooms from './Traveller/viewReservedRooms';
 import MyProfile from './Traveller/myProfile';
+
+
+import Payment from './Traveller/Payment';
+
 
 
 
@@ -86,12 +85,8 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <Route path='/' exact component={SuperAdminDashboard} />
-                        <Route path='/basic-info' exact component={BasicInfo} />
-                        <Route path='/user-roles' exact component={UserRoles} />
-                        <Route path='/user-list' exact component={UserList} />
-                        <Route path='/categories' exact component={Categories} />
-                        <Route path='/product-codes' exact component={ProductCodes} />
-                        <Route path='/metirial-codes' exact component={MaterialCodes} />
+                        <Route path='/staff-users' exact component={Users} />
+                        <Route path='/hotel-rooms' exact component={Rooms} />
                     </div>
                 );
             }
@@ -99,6 +94,7 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <Route path='/' exact component={TravellerDashboard} />
+                        <Route path='/payment' exact component={Payment} />
                          <Route path='/availableRooms' exact component={ViewAvailableRooms} />
                          <Route path='/reservedRooms' exact component={ViewReservedRooms} />
                          <Route path='/myprofile' exact component={MyProfile} />
@@ -110,7 +106,7 @@ class Dashboard extends Component {
             if(user_role == 'Hotel Staff'){
                 return (
                     <div>
-                        <Route path='/' exact component={HotelStaffDashboard} />
+                        <Route path='/' exact component={Reservation} />
                         <Route path='/resavations' exact component={Reservation} />
                     </div>
                 );

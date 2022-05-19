@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddProductCodeModal extends Component {
+export class AddRoomsModel extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -25,22 +25,15 @@ export class AddProductCodeModal extends Component {
     };
 
     componentDidMount() {
-        axios
-          .get("http://localhost:5000/api/categories")
-          .then((result) => {
-            const categories = result.data;
-    
-            this.setState({ categories: categories });
-          })
-          .catch((err) => console.log(err.message));
+        
       }
 
     handleSubmit(event) {
-
+        console.log("test");
         event.preventDefault();
-        const isValid = this.validate(event);
-        if(isValid){
-            fetch('http://localhost:5000/api/product-code/', {
+        // const isValid = this.validate(event);
+        // if(isValid){
+            fetch('http://localhost:8082/addRoom', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -48,15 +41,17 @@ export class AddProductCodeModal extends Component {
                     'username': 'chathura'
                 },
                 body: JSON.stringify({
-                    productCode: event.target.productCode.value,
-                    productCategory: event.target.productCategory.value,
-                    status: event.target.status.value
+                    roomNo: event.target.roomNo.value,
+                    type: event.target.type.value,
+                    status: event.target.status.value,
+                    perHour: event.target.perHour.value,
+                    perDay: event.target.perDay.value
                 })
             })
                 .then(res => res.json())
                 .then((result) => {
                     swal({
-                        title: "Product Code Added Succesfully",
+                        title: "Room Added Succesfully",
                         icon: "success",
                         button: "Done",
                     });
@@ -72,35 +67,10 @@ export class AddProductCodeModal extends Component {
                 }
 
                 )
-        }
+        // }
     }
 
-    validate(event){
-        let productCodeError = "";
-        let productCategoryError = "";
-      
-       
-        if(!event.target.productCode.value){
-            productCodeError = "Product Code Cannot Be Blank"
-        }
-        if(!event.target.productCategory.value){
-            productCategoryError = "Please Select Product Category"
-        }
-        
-       
-
-        if(productCodeError){
-            this.setState({
-                productCodeError:productCodeError,
-                productCategoryError:productCategoryError
-            })
-            return false;
-        }else{
-            return true;
-        }
-
-        
-    }
+    
 
     render() {
         return (
@@ -123,7 +93,7 @@ export class AddProductCodeModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Product Code
+                            Add Room
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -131,32 +101,33 @@ export class AddProductCodeModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Product Code</Form.Label>
-                                        <Form.Control type="text" name="productCode"  placeholder="Product Code" />
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCodeError}</div>
+                                    <Form.Group controlId="roomNo">
+                                        <Form.Label>Room No</Form.Label>
+                                        <Form.Control type="text" name="roomNo"  placeholder="Room No" />
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Product Category</Form.Label>
-                                        <Form.Control as="select" required name="productCategory">
-                                        {this.state.categories.map((i) => (
-                                            <option key={i._id}
-                                                    >{i.categoryName}</option>
-                                        ))}
-                                        </Form.Control>  
-                                        <div style={{background:"#f8d7da"}}>{this.state.productCategoryError}</div>
+                                    <Form.Group controlId="type">
+                                        <Form.Label>type</Form.Label>
+                                        <Form.Control type="text" name="type"  placeholder="type" />
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select"  name="status">
+                                        <Form.Control as="select" required name="status">
                                             <option selected>ACTIVE</option>
                                             <option>INACTIVE</option>
                                         </Form.Control>
                                     </Form.Group>
+                                    <Form.Group controlId="perHour">
+                                        <Form.Label>perHour</Form.Label>
+                                        <Form.Control type="text" name="perHour"  placeholder="perHour" />
+                                    </Form.Group>
+                                    <Form.Group controlId="perDay">
+                                        <Form.Label>perHour</Form.Label>
+                                        <Form.Control type="text" name="perDay"  placeholder="perDay" />
+                                    </Form.Group>
                                     <br />
                                     <Form.Group>
                                         <Button style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Product Code
+                                            Add Room
                                         </Button>
                                     </Form.Group>
                                 </Form>

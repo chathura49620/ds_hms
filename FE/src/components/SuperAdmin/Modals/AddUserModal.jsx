@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import { Redirect } from 'react-router-dom';
 
 
-export class AddCategoryModal extends Component {
+export class AddUserModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,8 +25,8 @@ export class AddCategoryModal extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const isValid = this.validate();
-        if(isValid){
-            fetch('http://localhost:5000/api/categories', {
+        // if(isValid){
+            fetch('http://localhost:8082/adduser', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -34,14 +34,18 @@ export class AddCategoryModal extends Component {
                     'username': 'chathura'
                 },
                 body: JSON.stringify({
-                    categoryName: event.target.categoryName.value,
-                    status: event.target.status.value
+                    fullName: event.target.full_name.value,
+                    email: event.target.email.value,
+                    password: event.target.password.value,
+                    country: 'sri lanka',
+                    contact: event.target.contact.value,
+                    type: 'Hotel Staff'
                 })
             })
                 .then(res => res.json())
                 .then((result) => {
                     swal({
-                        title: "Category Added Succesfully",
+                        title: "User Added Succesfully",
                         icon: "success",
                         button: "Done",
                     }); 
@@ -54,7 +58,7 @@ export class AddCategoryModal extends Component {
                 }
 
                 )
-        }
+        // }
     }
 
     validate(){
@@ -93,7 +97,7 @@ export class AddCategoryModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Category
+                            Add System User
               </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -101,22 +105,26 @@ export class AddCategoryModal extends Component {
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="name">
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" name="categoryName"  placeholder="Category Name" />
-                                          <div style={{background:"#f8d7da"}}>{this.state.CategoryNameError}</div>
+                                    <Form.Group controlId="full_name">
+                                        <Form.Label>Full Name</Form.Label>
+                                        <Form.Control type="text" name="full_name"  placeholder="Full Name" />
                                     </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select" required name="status">
-                                            <option selected>ACTIVE</option>
-                                            <option>INACTIVE</option>
-                                        </Form.Control>
+                                    <Form.Group controlId="email">
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control type="text" name="email"  placeholder="Email" />
+                                    </Form.Group>
+                                    <Form.Group controlId="contact">
+                                        <Form.Label>contact</Form.Label>
+                                        <Form.Control type="text" name="contact"  placeholder="contact" />
+                                    </Form.Group>
+                                    <Form.Group controlId="Password">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control type="text" name="password"  placeholder="Password" />
                                     </Form.Group>
                                     <br></br>
                                     <Form.Group>
                                         <Button  style={{ backgroundColor: "#7121AD", color: "white" }} variant="primary" type="submit" >
-                                            Add Category
+                                            Add User
                                         </Button>
                                     </Form.Group>
                                 </Form>

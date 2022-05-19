@@ -1,48 +1,52 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Table, Button, ButtonToolbar } from 'react-bootstrap';
-import { AddCategoryModal } from '../../components/SuperAdmin/Modals/AddCategoryModal';
-import {CategoriesTable} from "../../components/SuperAdmin/Tables/CategoriesTable";
+import { AddUserModal } from '../../components/SuperAdmin/Modals/AddUserModal';
+import {StaffUserTable} from "../../components/SuperAdmin/Tables/StaffUserTable";
 
 
-class Categories extends Component {
+class Users extends Component {
   state = {
-    categories: [],
+    users: [],
     addModalShow: false
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("http://localhost:8082/users")
       .then((result) => {
-        const categories = result.data;
+        const users = result.data;
 
-        this.setState({ categories: categories });
+        this.setState({ users: users });
       })
       .catch((err) => console.log(err.message));
   }
 
-
-  render() {
+  render(){
     let AddModelClose = () => this.setState({ addModalShow: false })
-    return (
-      <React.Fragment>
-        <h1 className="mb-5">Categories</h1>
+  return (
+    <React.Fragment>
+        <h1 className="mb-5">Users</h1>
         <ButtonToolbar>
                     <Button style={{ backgroundColor: "#7121AD", color: "white" }}
                     className="btn btn-lg"
                         onClick={() => this.setState({ addModalShow: true })}
-                    >Add Category
+                    >Add System User
                     </Button>
-                    <AddCategoryModal
+                    <AddUserModal
                         show={this.state.addModalShow}
                         onHide={AddModelClose}
                     />
-          </ButtonToolbar>
-            <CategoriesTable filteredItems={this.state.categories} />
+        </ButtonToolbar>
+        <div className="row">
+          <div className="col-1"></div>
+          <div className="col">
+            <StaffUserTable users={this.state.users} />
+          </div>
+        </div>
       </React.Fragment>
-    );
+  );
   }
 };
 
-export default Categories;
+export default Users;
