@@ -17,6 +17,7 @@ import com.project.hotelreservationbackend.entity.Room;
 import com.project.hotelreservationbackend.service.RoomService;
 
 @CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
+
 @RestController
 public class RoomController {
 	

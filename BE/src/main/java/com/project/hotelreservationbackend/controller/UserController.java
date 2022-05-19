@@ -16,7 +16,7 @@ import com.project.hotelreservationbackend.entity.Product;
 import com.project.hotelreservationbackend.entity.User;
 import com.project.hotelreservationbackend.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class UserController {
 	

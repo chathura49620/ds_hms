@@ -63,8 +63,8 @@ const Sidebar = () => {
             
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-          <h2>Research Project Management Tool</h2>
-          <button className='btn btn-sm btn-primary' onClick={() =>{
+          <h2>Hotel Reservation Management</h2>
+          <button className='btn btn-sm btn-danger' onClick={() =>{
             localStorage.removeItem("is_login");
             window.location.href = "/"
             

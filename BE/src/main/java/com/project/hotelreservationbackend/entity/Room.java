@@ -20,6 +20,7 @@ public class Room {
 	private double perDay;
 	
 	
+	
 	public Room() {}
 
 

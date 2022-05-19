@@ -6,13 +6,37 @@ import Chart from "../charts/chart";
 import hello from "../assets/hello.png";
 // import clock from "../assets/clock.png";
 // import Clock from "../../components/ProductionManager/common/clock";
+import MainContent from "./TravellerDashboard/MainContent"
+//import "./TravellerDashboard/dashboard.css"
+
+import styled from "styled-components";
+
+
 
 class Dashboard extends Component {
   state = {
-   
+    reservedRooms: [],
+    availableRooms: [],
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+
+    const response = await fetch("http://localhost:8082/reservedRooms", {
+      method: "GET",
+    });
+
+    const data = await response.json();
+
+
+    const response2 = await fetch("http://localhost:8082/rooms", {
+      method: "GET",
+    });
+
+    const data2 = await response2.json();
+    const availableRooms = data2.filter(d => d.status === "available")
+    
+    this.setState({reservedRooms: data, availableRooms: availableRooms});
+    console.log(data);
     
   }
 
@@ -26,9 +50,24 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <h1>test traveller dashboard</h1>
+      <Container>
+      <MainContent NumOfReserved={this.state.reservedRooms.length} NumOfAvailable={this.state.availableRooms.length}
+      reservedRooms={this.state.reservedRooms}
+      />
+    </Container>
     );
   }
 };
+
+
+const Container = styled.div`
+  display: flex;
+  height: 97vh;
+  background: linear-gradient(to bottom right, white 0%, #e6e4ff 70%);
+  border-radius: 2rem;
+  @media screen and (min-width: 320px) and (max-width: 1080px) {
+    flex-direction: column;
+  }
+`;
 
 export default Dashboard;

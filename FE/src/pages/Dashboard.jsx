@@ -11,13 +11,28 @@ import TravellerDashboard from './Traveller/Dashboard'
 
 
 //super admin routers
+<<<<<<< HEAD
 import Users from './SuperAdmin/Users';
 import Rooms from './SuperAdmin/Rooms';
 import  login  from '../components/forms/loginUser';
 import  RegisterTraveller  from '../components/forms/registerTraveller';
+=======
+import BasicInfo from './SuperAdmin/BasicInfo';
+import UserRoles from './SuperAdmin/UserRoles';
+import UserList from './SuperAdmin/UserList';
+import Categories from './SuperAdmin/Categories';
+import ProductCodes from './SuperAdmin/ProductCodes';
+import MaterialCodes from './SuperAdmin/MaterialCodes';
+import login from "../components/Traveller/forms/loginUser";
+import  RegisterTraveller  from '../components/Traveller/forms/registerTraveller';
+>>>>>>> f76ac4779c1c71a9496a8c22aa98a0c4ed2208c1
 
 //super admin routers
 import Reservation from './HotelStaff/Reservation';
+import ViewAvailableRooms from './Traveller/viewAvailableRooms';
+import ViewReservedRooms from './Traveller/viewReservedRooms';
+import MyProfile from './Traveller/myProfile';
+
 
 import Payment from './Traveller/Payment';
 
@@ -90,7 +105,15 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <Route path='/' exact component={TravellerDashboard} />
+<<<<<<< HEAD
                         <Route path='/payment' exact component={Payment} />
+=======
+                         <Route path='/availableRooms' exact component={ViewAvailableRooms} />
+                         <Route path='/reservedRooms' exact component={ViewReservedRooms} />
+                         <Route path='/myprofile' exact component={MyProfile} />
+                         
+
+>>>>>>> f76ac4779c1c71a9496a8c22aa98a0c4ed2208c1
                     </div>
                 );
             }

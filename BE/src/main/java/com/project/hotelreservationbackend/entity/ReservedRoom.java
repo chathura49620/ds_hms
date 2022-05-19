@@ -13,10 +13,10 @@ public class ReservedRoom {
 	@Id
 	@GeneratedValue
 	private int id;
-	private int roomId;
+	private String roomNo;
 	private String type;
 	private String customerName;
-	private int customerId;
+	private String customerId;
 	private String startDate;
 	private String endDate;
 	
@@ -26,11 +26,11 @@ public class ReservedRoom {
 
 
 
-	public ReservedRoom(int id, int roomId, String type, String customerName, int customerId, String startDate,
+	public ReservedRoom(int id, String roomNo, String type, String customerName, String customerId, String startDate,
 			String endDate) {
 		super();
 		this.id = id;
-		this.roomId = roomId;
+		this.roomNo = roomNo;
 		this.type = type;
 		this.customerName = customerName;
 		this.customerId = customerId;
@@ -52,14 +52,14 @@ public class ReservedRoom {
 
 
 
-	public int getRoomId() {
-		return roomId;
+	public String getRoomNo() {
+		return roomNo;
 	}
 
 
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+	public void setRoomNo(String roomNo) {
+		this.roomNo = roomNo;
 	}
 
 
@@ -88,13 +88,13 @@ public class ReservedRoom {
 
 
 
-	public int getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
 
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
@@ -126,15 +126,12 @@ public class ReservedRoom {
 
 	@Override
 	public String toString() {
-		return "ReservedRoom [id=" + id + ", roomId=" + roomId + ", type=" + type + ", customerName=" + customerName
+		return "ReservedRoom [id=" + id + ", roomNo=" + roomNo + ", type=" + type + ", customerName=" + customerName
 				+ ", customerId=" + customerId + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 
 
-
-	
 	
 
 	
-
 }
