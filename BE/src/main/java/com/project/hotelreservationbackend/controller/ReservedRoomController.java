@@ -17,7 +17,7 @@ import com.project.hotelreservationbackend.entity.Product;
 import com.project.hotelreservationbackend.entity.ReservedRoom;
 import com.project.hotelreservationbackend.service.ReservedRoomService;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ReservedRoomController {
 	

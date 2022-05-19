@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.hotelreservationbackend.entity.Room;
 import com.project.hotelreservationbackend.service.RoomService;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class RoomController {
 	

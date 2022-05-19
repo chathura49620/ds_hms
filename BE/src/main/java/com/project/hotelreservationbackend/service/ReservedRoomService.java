@@ -45,7 +45,7 @@ public class ReservedRoomService {
    public ReservedRoom updateReserved(ReservedRoom reservedRoom) {
    	
 	ReservedRoom existingReserved = repository.findById(reservedRoom.getId()).orElse(null);
-	existingReserved.setRoomId(reservedRoom.getRoomId());
+	existingReserved.setRoomNo(reservedRoom.getRoomNo());
 	existingReserved.setType(reservedRoom.getType());
 	existingReserved.setCustomerName(reservedRoom.getCustomerName());
 	existingReserved.setCustomerId(reservedRoom.getCustomerId());

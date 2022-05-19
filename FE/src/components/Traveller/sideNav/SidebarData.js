@@ -43,8 +43,8 @@ export const SidebarData = [
   },
 
   {
-    title: "Add a Member",
-    path: "/register",
+    title: "available rooms",
+    path: "/availableRooms",
     icon: <IoIcons.IoMdTime />,
   },
 

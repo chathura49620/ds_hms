@@ -18,11 +18,15 @@ import UserList from './SuperAdmin/UserList';
 import Categories from './SuperAdmin/Categories';
 import ProductCodes from './SuperAdmin/ProductCodes';
 import MaterialCodes from './SuperAdmin/MaterialCodes';
-import  login  from '../components/forms/loginUser';
-import  RegisterTraveller  from '../components/forms/registerTraveller';
+import login from "../components/Traveller/forms/loginUser";
+import  RegisterTraveller  from '../components/Traveller/forms/registerTraveller';
 
 //super admin routers
 import Reservation from './HotelStaff/Reservation';
+import ViewAvailableRooms from './Traveller/viewAvailableRooms';
+import ViewReservedRooms from './Traveller/viewReservedRooms';
+import MyProfile from './Traveller/myProfile';
+
 
 
 
@@ -95,6 +99,11 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <Route path='/' exact component={TravellerDashboard} />
+                         <Route path='/availableRooms' exact component={ViewAvailableRooms} />
+                         <Route path='/reservedRooms' exact component={ViewReservedRooms} />
+                         <Route path='/myprofile' exact component={MyProfile} />
+                         
+
                     </div>
                 );
             }
