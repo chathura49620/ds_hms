@@ -20,7 +20,7 @@ export class ReservationTable extends Component {
     })
     .then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:8082/deleteReservation/${id}`, {
+        fetch(`http://localhost:8083/deleteReservation/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

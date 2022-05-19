@@ -18,7 +18,7 @@ export class TaxiReservationTable extends Component {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:8082/delete/taxies/${id}`, {
+        fetch(`http://localhost:8083/delete/taxies/${id}`, {
           method: "DELETE",
           headers: {
             Accept: "application/json",

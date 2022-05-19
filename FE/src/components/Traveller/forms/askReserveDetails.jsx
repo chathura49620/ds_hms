@@ -41,7 +41,7 @@ class AskReserveDetails extends FormSuper {
   async componentDidMount() {
 
 
-    const response = await fetch("http://localhost:8082/reservedRooms", {
+    const response = await fetch("http://localhost:8083/reservedRooms", {
       method: "GET",
     });
 
@@ -119,7 +119,7 @@ class AskReserveDetails extends FormSuper {
         break;
       }
       else {
-          const response = await fetch("http://localhost:8082/addReservedRoom", {
+          const response = await fetch("http://localhost:8083/addReservedRoom", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(jsonOb),

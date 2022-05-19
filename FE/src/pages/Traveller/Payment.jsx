@@ -9,12 +9,18 @@ class Rooms extends Component {
   state = {
     rooms: [],
     resavation_id:0,
+    customerId:'',
+    endDate:'',
+    startDate:'',
+    type:'',
+    room_no:'',
+    customerName:'',
     addModalShow: false
   };
 
   componentDidMount() {
     // axios
-    //   .get("http://localhost:8082/rooms")
+    //   .get("http://localhost:8083/rooms")
     //   .then((result) => {
     //     const rooms = result.data;
 
@@ -22,17 +28,29 @@ class Rooms extends Component {
     //   })
     //   .catch((err) => console.log(err.message));
     const resavation_id= new URLSearchParams(this.props.location.search).get("resavation-id");
+    const customerId= new URLSearchParams(this.props.location.search).get("customerId");
+    const startDate= new URLSearchParams(this.props.location.search).get("startDate");
+    const customerName= new URLSearchParams(this.props.location.search).get("customerName");
+    const endDate= new URLSearchParams(this.props.location.search).get("endDate");
+    const type= new URLSearchParams(this.props.location.search).get("type");
+    const room_no= new URLSearchParams(this.props.location.search).get("room_no");
     this.setState({ resavation_id: resavation_id });
+    this.setState({ customerName: customerName });
+    this.setState({ customerId: customerId });
+    this.setState({ endDate: endDate });
+    this.setState({ startDate: startDate });
+    this.setState({ type: type });
+    this.setState({ room_no: room_no });
   }
 
-  handleSubmit(event) {
+  handleSubmit =(event) => {
    
     event.preventDefault();
     // const isValid = this.validate(event);
     // if(isValid){
     
       
-    fetch('http://localhost:8082/addPaymentDetails', {
+    fetch('http://localhost:8083/addPaymentDetails', {
       
       method: 'POST',
       headers: {
@@ -44,8 +62,26 @@ class Rooms extends Component {
         customerName: event.target.customerName.value,
         cardNo: event.target.cardNo.value,
         exp: event.target.exp.value,
-        reservationId: event.target.resavation_id.value,
+        reservationId: this.state.resavation_id,
         amount: event.target.amount.value
+      })
+    })
+    fetch('http://localhost:8083/addReservedRoom', {
+      
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'username': 'chathura'
+      },
+      body: JSON.stringify({
+        roomNo: this.state.room_no,
+        type: this.state.type,
+        customerName: this.state.customerName,
+        customerId: this.state.customerId,
+        startDate: this.state.startDate,
+        endDate: this.state.endDate,
+        paymentStatus: 'Completed'
       })
     })
       .then(res => res.json())
@@ -56,7 +92,7 @@ class Rooms extends Component {
           button: "Done",
         });
         setTimeout(function () {
-          window.location.reload();
+          // window.location.reload();
         }.bind(this), 1500);
       }, (error) => {
         // this.setState({ snackbaropen: true, snackbarmsg: 'Failed' })
@@ -75,11 +111,11 @@ class Rooms extends Component {
 
     return (
       <React.Fragment>
-        <h1 className="mb-5">Payment Gateway</h1>
-        Amount = {amount} <br></br>
-        resavation id = {resavation_id}
+        
         <Row>
-          <Col sm={6}>
+        <Col md={4}></Col>
+          <Col sm={4}>
+          <h1 className="mb-5">Payment Gateway</h1>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="customerName">
                 <Form.Label>Card Holder Name</Form.Label>
@@ -112,6 +148,7 @@ class Rooms extends Component {
               </Form.Group>
             </Form>
           </Col>
+          <Col md={4}></Col>
         </Row>
       </React.Fragment>
     );

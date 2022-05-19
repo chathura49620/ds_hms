@@ -13,7 +13,7 @@ class Users extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8082/users")
+      .get("http://localhost:8083/users")
       .then((result) => {
         const users = result.data;
 

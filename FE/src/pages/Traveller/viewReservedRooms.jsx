@@ -24,7 +24,7 @@ class ViewReservedRooms extends Component {
       const  reservedRooms = this.state.reservedRooms.filter(room => room.id !== id);
       this.setState({reservedRooms});
 
-      const response = await fetch("http://localhost:8082/delete/reserved/"+id, {
+      const response = await fetch("http://localhost:8083/delete/reserved/"+id, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -51,7 +51,7 @@ class ViewReservedRooms extends Component {
 
    async componentDidMount(){
 
-        const response = await fetch("http://localhost:8082/reservedRooms", {
+        const response = await fetch("http://localhost:8083/reservedRooms", {
             method: "GET",
           });
 

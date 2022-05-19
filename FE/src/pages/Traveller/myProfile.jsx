@@ -20,7 +20,7 @@ class MyProfile extends Component {
     //get user details from database and set them to the state and tableprofile
     //use email of user session
     const userId = localStorage.getItem('u_id');
-    const response = await fetch("http://localhost:8082/userById/"+ userId, {
+    const response = await fetch("http://localhost:8083/userById/"+ userId, {
         method: "GET",
       });
   
