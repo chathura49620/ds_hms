@@ -10,7 +10,7 @@ import SuperAdminDashboard from './SuperAdmin/Dashboard'
 import HotelStaffDashboard from './HotelStaff/Dashboard'
 import TravellerDashboard from './Traveller/Dashboard'
 
-
+//
 //super admin routers
 import BasicInfo from './SuperAdmin/BasicInfo';
 import UserRoles from './SuperAdmin/UserRoles';
